@@ -5,7 +5,8 @@ import {
   StyleSheet,
   View,
   FlatList,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
@@ -16,38 +17,49 @@ const DATA = [
   {
     title: 'Games',
     members: 'Daniell, Pim, Jordan',
-    date: '20-12-2023'
+    date: '20-12-2023',
+    backgroundImage: require('../../Images/Games.jpg')
   },
   {
     title: 'Vacation',
     members: 'Daniell, Pim, Jordan, Max',
-    date: '08-06-2024'
+    date: '08-06-2024',
+    backgroundImage: require('../../Images/Vacation.jpg')
   },
   {
     title: 'Weekend Trip',
     members: 'Daniell, Marleen',
-    date: '20-06-2024'
+    date: '20-06-2024',
+    backgroundImage: require('../../Images/WeekendTrip.jpg')
   },
   {
     title: 'Family Holiday',
     members: 'Daniell, Marleen, Tim, Julia',
-    date: '20-12-2023'
+    date: '20-12-2023',
+    backgroundImage: require('../../Images/FamilyHoliday.jpg')
   },
   {
     title: 'Games 2',
     members: 'Daniell, Pim',
-    date: '20-12-2023'
+    date: '20-12-2023',
+    backgroundImage: require('../../Images/Games2.jpg')
   }
 ]
 
-const Item = ({ title, members, date }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-    <View style={styles.groupDescription}>
-      <Text style={styles.itemDescription}>{date}</Text>
-      <Text style={styles.itemDescription}>{members}</Text>
+const Item = ({ title, members, date, backgroundImage }) => (
+  <ImageBackground
+    source={backgroundImage}
+    imageStyle={{ borderRadius: 8 }}
+    style={styles.itemBackground}
+  >
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+      <View style={styles.groupDescription}>
+        <Text style={styles.itemDescription}>{date}</Text>
+        <Text style={styles.itemDescription}>{members}</Text>
+      </View>
     </View>
-  </View>
+  </ImageBackground>
 )
 
 const Groups = () => {
@@ -67,10 +79,16 @@ const Groups = () => {
           showsVerticalScrollIndicator={false}
           data={DATA}
           renderItem={({ item }) => (
-            <Item title={item.title} members={item.members} date={item.date} />
+            <Item
+              title={item.title}
+              members={item.members}
+              date={item.date}
+              backgroundImage={item.backgroundImage}
+            />
           )}
         />
       </View>
+      <View></View>
     </SafeAreaView>
   )
 }
@@ -94,10 +112,10 @@ const styles = StyleSheet.create({
     padding: 10,
     width: windowWidth * 0.9,
     height: 130,
-    marginBottom: 20,
     borderRadius: 13,
     justifyContent: 'space-between',
-    borderWidth: 1
+    borderWidth: 1,
+    overflow: 'hidden'
   },
   groupContainer: {
     height: windowHeight * 0.75,
@@ -107,14 +125,18 @@ const styles = StyleSheet.create({
   groupDescription: {
     justifyContent: 'space-between',
     gap: 40,
-    flexDirection: 'row',
-    backgroundColor: 'white'
+    flexDirection: 'row'
   },
   title: {
     fontSize: 20
   },
   itemDescription: {
     fontSize: 14
+  },
+  itemBackground: {
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    marginBottom: 20
   }
 })
 

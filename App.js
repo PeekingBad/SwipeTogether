@@ -1,11 +1,12 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Splash from './src/components/splashscreen'
+import Groups from './src/components/groups'
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Splash />
+      <Groups />
     </View>
   )
 }

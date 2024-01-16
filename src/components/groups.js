@@ -1,6 +1,24 @@
 import React from 'react'
-import { SafeAreaView, Text, StyleSheet, View } from 'react-native'
+import { SafeAreaView, Text, StyleSheet, View, FlatList } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
+
+const DATA = [
+  {
+    title: 'Games'
+  },
+  {
+    title: 'Vacation'
+  },
+  {
+    title: 'Weekend Trip'
+  }
+]
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+)
 
 const Groups = () => {
   return (
@@ -12,6 +30,12 @@ const Groups = () => {
           name="account-circle"
           size={40}
           color="black"
+        />
+      </View>
+      <View style={styles.groupContainer}>
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => <Item title={item.title} />}
         />
       </View>
     </SafeAreaView>
@@ -30,7 +54,25 @@ const styles = StyleSheet.create({
   },
   accountIcon: {
     position: 'absolute',
-    right: 16
+    right: 15
+  },
+  otherDiv: {
+    marginTop: 20,
+    height: 560,
+    backgroundColor: 'red'
+  },
+  item: {
+    backgroundColor: 'red',
+    alignItems: 'left',
+    padding: 20,
+    height: 130,
+    width: 370,
+    marginBottom: 20,
+    borderRadius: 13
+  },
+  groupContainer: {
+    marginTop: 20,
+    alignItems: 'center'
   }
 })
 

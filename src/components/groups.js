@@ -53,7 +53,9 @@ const Item = ({ title, members, date, backgroundImage }) => (
     style={styles.itemBackground}
   >
     <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
+      <View style={styles.titleBackground}>
+        <Text style={styles.title}>{title}</Text>
+      </View>
       <View style={styles.groupDescription}>
         <Text style={styles.itemDescription}>{date}</Text>
         <Text style={styles.itemDescription}>{members}</Text>
@@ -109,12 +111,10 @@ const styles = StyleSheet.create({
   },
   item: {
     alignItems: 'left',
-    padding: 10,
     width: windowWidth * 0.9,
     height: 130,
-    borderRadius: 13,
     justifyContent: 'space-between',
-    borderWidth: 1,
+    borderWidth: 0.1,
     overflow: 'hidden'
   },
   groupContainer: {
@@ -124,14 +124,28 @@ const styles = StyleSheet.create({
   },
   groupDescription: {
     justifyContent: 'space-between',
+    width: '100%',
+    padding: 8,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    backgroundColor: 'rgba(0,0,0,0.4)',
     gap: 40,
     flexDirection: 'row'
   },
   title: {
-    fontSize: 20
+    fontSize: 20,
+    color: 'white'
+  },
+  titleBackground: {
+    margin: 5,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    padding: 5,
+    borderRadius: 8,
+    blurRadius: 1
   },
   itemDescription: {
-    fontSize: 14
+    fontSize: 14,
+    color: 'white'
   },
   itemBackground: {
     resizeMode: 'cover',

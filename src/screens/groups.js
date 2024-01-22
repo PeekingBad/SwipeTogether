@@ -6,9 +6,10 @@ import {
   View,
   FlatList,
   Dimensions,
-  ImageBackground
+  StatusBar
 } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
+import GroupCard from '../components/groupCard'
 
 const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
@@ -46,25 +47,15 @@ const DATA = [
   }
 ]
 
-const Item = ({ title, members, date, backgroundImage }) => (
-  <ImageBackground
-    source={backgroundImage}
-    imageStyle={{ borderRadius: 8 }}
-    style={styles.itemBackground}
-  >
-    <View style={styles.item}>
-      <View style={styles.titleBackground}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-      <View style={styles.groupDescription}>
-        <Text style={styles.itemDescription}>{date}</Text>
-        <Text style={styles.itemDescription}>{members}</Text>
-      </View>
-    </View>
-  </ImageBackground>
-)
-
-const Groups = () => {
+const CardInfo = () => {
+  const renderItem = ({ item }) => (
+    <GroupCard
+      title={item.title}
+      members={item.members}
+      date={item.date}
+      backgroundImage={item.backgroundImage}
+    />
+  )
   return (
     <SafeAreaView>
       <View style={styles.topBar}>
@@ -80,24 +71,16 @@ const Groups = () => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={DATA}
-          renderItem={({ item }) => (
-            <Item
-              title={item.title}
-              members={item.members}
-              date={item.date}
-              backgroundImage={item.backgroundImage}
-            />
-          )}
+          renderItem={renderItem}
         />
       </View>
-      <View></View>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   topBar: {
-    marginTop: 20,
+    marginTop: StatusBar.currentHeight || 20,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
@@ -109,49 +92,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15
   },
-  item: {
-    alignItems: 'left',
-    width: windowWidth * 0.9,
-    height: 130,
-    justifyContent: 'space-between',
-    borderWidth: 0.1,
-    overflow: 'hidden'
-  },
   groupContainer: {
     height: windowHeight * 0.75,
     marginTop: 20,
     alignItems: 'center'
-  },
-  groupDescription: {
-    justifyContent: 'space-between',
-    width: '100%',
-    padding: 8,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    gap: 40,
-    flexDirection: 'row'
-  },
-  title: {
-    fontSize: 20,
-    color: 'white'
-  },
-  titleBackground: {
-    margin: 5,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    padding: 5,
-    borderRadius: 8,
-    blurRadius: 1
-  },
-  itemDescription: {
-    fontSize: 14,
-    color: 'white'
-  },
-  itemBackground: {
-    resizeMode: 'cover',
-    justifyContent: 'center',
-    marginBottom: 20
   }
 })
 
-export default Groups
+export default CardInfo

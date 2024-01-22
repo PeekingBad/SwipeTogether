@@ -39,7 +39,7 @@ const CategoryItems = ({ title }) => (
 const Favorites = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <TopNav></TopNav>
+      <TopNav pageName="Favorites"></TopNav>
       <View style={styles.selectCategoryView}>
         <Text style={styles.selectCategoryText}>Select a category</Text>
       </View>

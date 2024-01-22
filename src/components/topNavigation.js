@@ -7,7 +7,7 @@ const TopNavigation = (props) => {
   const { topBar, screenTitle, accountIcon } = styles
   return (
     <View style={topBar}>
-      <Text style={screenTitle}>Favorites</Text>
+      <Text style={screenTitle}>{pageName}</Text>
       <MaterialIcons
         style={accountIcon}
         name="account-circle"

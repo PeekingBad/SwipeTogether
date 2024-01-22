@@ -11,7 +11,6 @@ import {
 import { MaterialIcons } from '@expo/vector-icons'
 import GroupCard from '../components/groupCard'
 
-const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
 
 const DATA = [
@@ -56,18 +55,19 @@ const CardInfo = () => {
       backgroundImage={item.backgroundImage}
     />
   )
+  const { topBar, screenTitle, accountIcon, groupContainer } = styles
   return (
     <SafeAreaView>
-      <View style={styles.topBar}>
-        <Text style={styles.screenTitle}>Groups</Text>
+      <View style={topBar}>
+        <Text style={screenTitle}>Groups</Text>
         <MaterialIcons
-          style={styles.accountIcon}
+          style={accountIcon}
           name="account-circle"
           size={40}
           color="black"
         />
       </View>
-      <View style={styles.groupContainer}>
+      <View style={groupContainer}>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={DATA}

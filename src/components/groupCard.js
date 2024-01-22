@@ -11,19 +11,27 @@ const windowWidth = Dimensions.get('window').width
 
 const GroupCard = (props) => {
   const { title, members, date, backgroundImage } = props
+  const {
+    itemBackground,
+    item,
+    titleBackground,
+    groupDescription,
+    itemDescription,
+    cardTitle
+  } = styles
   return (
     <ImageBackground
       source={backgroundImage}
       imageStyle={{ borderRadius: 8 }}
-      style={styles.itemBackground}
+      style={itemBackground}
     >
-      <View style={styles.item}>
-        <View style={styles.titleBackground}>
-          <Text style={styles.title}>{title}</Text>
+      <View style={item}>
+        <View style={titleBackground}>
+          <Text style={cardTitle}>{title}</Text>
         </View>
-        <View style={styles.groupDescription}>
-          <Text style={styles.itemDescription}>{date}</Text>
-          <Text style={styles.itemDescription}>{members}</Text>
+        <View style={groupDescription}>
+          <Text style={itemDescription}>{date}</Text>
+          <Text style={itemDescription}>{members}</Text>
         </View>
       </View>
     </ImageBackground>
@@ -41,7 +49,7 @@ const styles = StyleSheet.create({
     gap: 40,
     flexDirection: 'row'
   },
-  title: {
+  cardTitle: {
     fontSize: 20,
     color: 'white'
   },

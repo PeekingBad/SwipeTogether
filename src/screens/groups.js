@@ -55,10 +55,10 @@ const CardInfo = () => {
       backgroundImage={item.backgroundImage}
     />
   )
-  const { topBar, screenTitle, accountIcon, groupContainer } = styles
+  const { container, groupContainer } = styles
   return (
-    <SafeAreaView>
-      <View style={topBar}>
+    <SafeAreaView style={container}>
+      {/* <View style={topBar}>
         <Text style={screenTitle}>Groups</Text>
         <MaterialIcons
           style={accountIcon}
@@ -66,7 +66,7 @@ const CardInfo = () => {
           size={40}
           color="black"
         />
-      </View>
+      </View> */}
       <View style={groupContainer}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -79,21 +79,16 @@ const CardInfo = () => {
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    marginTop: StatusBar.currentHeight || 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row'
+  container: {
+    backgroundColor: 'white'
   },
-  screenTitle: {
-    fontSize: 28
-  },
-  accountIcon: {
-    position: 'absolute',
-    right: 15
-  },
+  // topBar: {
+  //   marginTop: StatusBar.currentHeight || 20,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   flexDirection: 'row'
+  // },
   groupContainer: {
-    height: windowHeight * 0.75,
     marginTop: 20,
     alignItems: 'center'
   }

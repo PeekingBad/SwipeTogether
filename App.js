@@ -1,20 +1,16 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import Splash from './src/screens/splashscreen'
-import Groups from './src/screens/groups'
-import Favorites from './src/screens/favorites'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Tabs from './src/components/tabs'
+
+const Tab = createBottomTabNavigator()
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Favorites />
-    </View>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
 export default App

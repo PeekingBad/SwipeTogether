@@ -37,14 +37,21 @@ const CategoryItems = ({ title }) => (
 )
 
 const Favorites = () => {
+  const {
+    container,
+    selectCategoryText,
+    selectCategoryView,
+    categoryContainer
+  } = styles
   return (
-    <SafeAreaView style={styles.container}>
-      <TopNav pageName="Favorites"></TopNav>
-      <View style={styles.selectCategoryView}>
-        <Text style={styles.selectCategoryText}>Select a category</Text>
+    <SafeAreaView style={container}>
+      {/* <TopNav pageName="Favorites"></TopNav> */}
+      <View style={selectCategoryView}>
+        <Text style={selectCategoryText}>Select a category</Text>
       </View>
-      <View style={styles.categoryContainer}>
+      <View style={categoryContainer}>
         <FlatList
+          scrollEnabled={false}
           data={DATA}
           renderItem={({ item }) => <CategoryItems title={item.title} />}
         />
@@ -56,10 +63,11 @@ const Favorites = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 20
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'white'
   },
   selectCategoryView: {
-    marginTop: 40,
+    marginTop: 100,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -80,7 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   categoryContainer: {
-    height: windowHeight * 0.65,
     marginTop: 20,
     overflow: 'hidden'
   }

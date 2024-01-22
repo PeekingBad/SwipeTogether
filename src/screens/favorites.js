@@ -69,13 +69,14 @@ const styles = StyleSheet.create({
   },
   category: {
     backgroundColor: '#1FE879',
-    marginTop: 30,
-    padding: 20,
+    marginTop: 20,
+    height: 50,
     marginHorizontal: 20,
-    borderRadius: 12
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   categoryText: {
-    textAlign: 'center',
     fontSize: 20
   },
   categoryContainer: {

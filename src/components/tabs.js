@@ -17,6 +17,9 @@ const Tabs = () => {
         headerTitleStyle: {
           fontWeight: 'bold',
           fontSize: 25
+        },
+        tabBarLabelStyle: {
+          fontSize: 12
         }
       }}
     >
@@ -27,8 +30,9 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={'cards'}
-              size={25}
+              size={32}
               color={focused ? '#1FE879' : 'grey'}
+              style={{ marginTop: 5 }}
             />
           )
         }}
@@ -40,8 +44,9 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={'cards-heart'}
-              size={25}
+              size={32}
               color={focused ? '#1FE879' : 'grey'}
+              style={{ marginTop: 5 }}
             />
           )
         }}

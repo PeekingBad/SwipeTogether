@@ -30,7 +30,7 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={'cards'}
-              size={32}
+              size={30}
               color={focused ? '#1FE879' : 'grey'}
               style={{ marginTop: 5 }}
             />
@@ -44,7 +44,7 @@ const Tabs = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={'cards-heart'}
-              size={32}
+              size={30}
               color={focused ? '#1FE879' : 'grey'}
               style={{ marginTop: 5 }}
             />
